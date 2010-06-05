@@ -1,0 +1,19 @@
+[% WRAPPER xhtml.tt2 title = question.question %]
+<h1>[% question.question | html %]</h1>
+<table class='bordered'>
+<thead>
+<tr><th>Voter</th><th>Vote</th></tr>
+</thead>
+<tbody>
+[% FOR vote IN votes %]
+  <tr>
+    <td>[% vote.voter.name | html %]</td>
+    <td>[% vote.vote_as_string | html %]</td>
+  </tr>
+[% END %]
+</tbody>
+</table>
+<div>
+<a href='[% c.uri_for('/view', question.referendum_id) %]'>Referendum</a>
+</div>
+[% END %]

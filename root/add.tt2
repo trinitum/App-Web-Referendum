@@ -1,0 +1,4 @@
+[% WRAPPER xhtml.tt2 title = 'Add ' _ object_type %]
+<h1>Add [% object_type | html %]</h1>
+[% form.render %]
+[% END %]

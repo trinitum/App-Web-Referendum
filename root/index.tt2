@@ -1,0 +1,12 @@
+[% WRAPPER xhtml.tt2 title = 'Referendum' %]
+<h1>Referendums</h1>
+<ul>
+[% FOR ref IN referendums.all %]
+    <li><a href='[% c.uri_for('/view', ref.id) %]'>[% ref.subject | html %]</a></li>
+[% END %]
+</ul>
+<div>
+    <a href='[% c.uri_for('/add') %]'>Add referendum</a>
+    <a href='[% c.uri_for('/voters') %]'>List of voters</a>
+</div>
+[% END %]

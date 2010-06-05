@@ -1,0 +1,13 @@
+use Plack::Builder;
+use App::Web::Referendum;
+
+App::Web::Referendum->setup_engine('PSGI');
+my $app = sub { App::Web::Referendum->run(@_) };
+
+builder {
+    enable "Auth::Basic", authenticator => sub {
+        my($username, $password) = @_;
+        return $username eq 'admin' && $password eq 'foobar';
+    };
+    $app;
+};

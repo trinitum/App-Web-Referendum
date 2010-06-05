@@ -1,0 +1,23 @@
+[% WRAPPER xhtml.tt2 title = 'Referendum: ' _ referendum.subject %]
+<h1>Referendum: [% referendum.subject | html %]</h1>
+<table class='bordered'>
+<thead>
+<tr><th>Question</th><th>Yes</th><th>No</th><th>Don't know</th></tr>
+</thead>
+<tbody>
+[% FOR result IN voting_results %]
+  <tr>
+    <td><a href='[% c.uri_for('/question', result.id) %]'>[% result.question | html %]</a></td>
+    <td>[% result.yep | html %]</td>
+    <td>[% result.nope | html %]</td>
+    <td>[% result.dunno | html%]</td>
+  </tr>
+[% END %]
+</tbody>
+</table>
+<div>
+<a href='[% c.uri_for('add_question', referendum.id) %]'>Add question</a>
+<a href='[% c.uri_for('vote', referendum.id) %]'>Vote</a>
+<a href='[% c.uri_for('/') %]'>Home</a>
+</div>
+[% END %]

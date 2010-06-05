@@ -1,0 +1,11 @@
+[% WRAPPER xhtml.tt2 title = 'Voters' %]
+<h1>Voters</h1>
+<ul>
+[% FOR voter IN voters.all %]
+    <li><a href='[% c.uri_for('view', voter.id) %]'>[% voter.name | html %]</a></li>
+[% END %]
+</ul>
+<div>
+    <a href='[% c.uri_for('/') %]'>Home</a>
+</div>
+[% END %]

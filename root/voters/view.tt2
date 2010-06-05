@@ -1,0 +1,19 @@
+[% WRAPPER xhtml.tt2 title = 'Votes by ' _ voter.name %]
+<h1>Votes by [% voter.name | html %]</h1>
+<table class='bordered'>
+<thead>
+<tr><th>Question</th><th>Vote</th></tr>
+</thead>
+<tbody>
+[% FOR vote IN votes %]
+  <tr>
+    <td>[% vote.question.question | html %]</td>
+    <td>[% vote.vote_as_string | html %]</td>
+  </tr>
+[% END %]
+</tbody>
+</table>
+<div>
+<a href='[% c.uri_for('/voters') %]'>Voters</a>
+</div>
+[% END %]
